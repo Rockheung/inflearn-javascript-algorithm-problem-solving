@@ -1,11 +1,16 @@
 const { expect } = require("chai");
-const answer_01 = require("../01-section/01-answer");
-
+const answers = [
+  require("../01-section/01-answer"),
+  require("../01-section/02-answer"),
+];
 
 describe("01-section", () => {
-  it("1. 세 수 중 최솟값", () => {
-    for (const { input, output } of answer_01.testSet) {
-      expect(answer_01(...input)).to.equal(output);
-    }
-  });
+  for (const answer of answers) {
+    const { problemName, testSet } = answer;
+    it(problemName, () => {
+      for (const { input, output } of testSet) {
+        expect(answer(...input)).to.equal(output);
+      }
+    });
+  }
 });

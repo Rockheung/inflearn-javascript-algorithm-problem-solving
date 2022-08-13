@@ -1,11 +1,12 @@
 module.exports = function (...args) {
-  const [arg0] = args;
-  return arg0.reduce((acc, item) => {
+  return args.reduce((acc, item) => {
     return acc > item ? item : acc;
   });
 };
 
+module.exports.problemName = '1. 세 수 중 최솟값'
+
 module.exports.testSet = [
-  { input: [[6, 5, 11]], output: 5 },
-  { input: [[6]], output: 6 },
+  { input: [6, 5, 11], output: 5 },
+  { input: [6], output: 6 },
 ];

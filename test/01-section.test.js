@@ -2,6 +2,7 @@ const { expect } = require("chai");
 const answers = [
   require("../01-section/01-answer"),
   require("../01-section/02-answer"),
+  require("../01-section/03-answer"),
 ];
 
 describe("01-section", () => {

@@ -3,6 +3,8 @@ const answers = [
   require("../01-section/01-answer"),
   require("../01-section/02-answer"),
   require("../01-section/03-answer"),
+  require("../01-section/04-answer"),
+  require("../01-section/05-answer"),
 ];
 
 describe("01-section", () => {

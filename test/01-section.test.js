@@ -1,11 +1,10 @@
 const { expect } = require("chai");
-const answers = [
-  require("../01-section/01-answer"),
-  require("../01-section/02-answer"),
-  require("../01-section/03-answer"),
-  require("../01-section/04-answer"),
-  require("../01-section/05-answer"),
-];
+const fs = require('fs');
+const path = require('path')
+const files = fs.readdirSync(path.join(__dirname, '../01-section'));
+const answers = files.map((file) => {
+  return require(path.join('../01-section', file))
+})
 
 describe("01-section", () => {
   for (const answer of answers) {

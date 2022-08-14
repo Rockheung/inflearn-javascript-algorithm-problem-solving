@@ -3,8 +3,8 @@
  */
 module.exports = function (...args) {
   const over = args.reduce((acc, item) => acc + item) - 100;
-  for (let i = 0; i < args.length; i += 1) {
-    for (let j = 0; j < args.length; j += 1) {
+  for (let i = 0; i < args.length - 1; i += 1) {
+    for (let j = i + 1; j < args.length; j += 1) {
       if (i === j) continue;
       if (args[i] + args[j] === over) {
         return args.filter((arg, idx) => idx !== i && idx !== j).join(" ");

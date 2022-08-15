@@ -10,9 +10,9 @@
 		"scope": "javascript",
 		"prefix": "ans",
 		"body": [
-			"module.exports = function (...args) {$3\n};\n",
+			"module.exports = function (...args) {$4\n};\n",
       "module.exports.problemName = '${1:problem name}'\n",
-      "module.exports.testSet = [\n  // { input: [], output: 'answer' }$2\n];"
+      "module.exports.testSet = [\n  { input: [$2], output: '$3' }\n];"
 		],
 		"description": "Generate new answer"
 	}

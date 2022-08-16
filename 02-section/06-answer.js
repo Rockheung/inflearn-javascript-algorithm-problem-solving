@@ -1,7 +1,6 @@
 module.exports = function (...args) {
   const [mat] = args;
   const matrixTransformed = tmax(mat);
-  console.log("🚀 ~ file: 06-answer.js ~ line 4 ~ matrixTransformed", matrixTransformed)
   const maxSumByRow = Math.max(...mat.map((row) => sum(row)));
   const maxSumByCol = Math.max(...matrixTransformed.map((row) => sum(row)));
   const sum_0_0_n_n = mat

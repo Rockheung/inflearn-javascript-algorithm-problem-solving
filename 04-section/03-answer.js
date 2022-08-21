@@ -1,4 +1,4 @@
-module.exports = function (...args) {
+module.exports.sol1 = function (...args) {
   const [[n, m], ...testResults] = args;
 
   const allCase = Array.from(new Array(n), (_, idx) =>
@@ -21,11 +21,38 @@ module.exports = function (...args) {
   return allCount;
 };
 
-// 강의의 답.
-// 학생 두명을 골라서, 학생 i번의 학생이 j번의 학생보다 모든 시험에서 등수가 앞섰는지를 확인하여 그 수를 세는 코드다.
+module.exports = function (...args) {
+  const [[n, m], ...testResults] = args;
+  let mentoringGroup = 0;
+
+  for (let mentor = 1; mentor <= n; mentor += 1) {
+    for (let mentee = 1; mentee <= n; mentee += 1) {
+      if (mentor === mentee) continue;
+      let testWinCount = 0
+      for (const testResult of testResults) {
+        let mentorScoreOrder, menteeScoreOrder;
+        for (let scoreOrder = 0; scoreOrder < n; scoreOrder += 1) {
+          if (testResult[scoreOrder] === mentor) mentorScoreOrder = scoreOrder;
+          else if (testResult[scoreOrder] === mentee) menteeScoreOrder = scoreOrder;
+        }
+        if (mentorScoreOrder < menteeScoreOrder) testWinCount += 1;
+      }
+      if (testWinCount === m) mentoringGroup += 1;
+      testWinCount = 0;
+    }
+  }
+
+  return mentoringGroup;
+}
+
+// 강의 코드
+// 학생 두명을 골라서, 
+// 학생 i번의 학생이 j번의 학생보다 모든 시험(cnt === m)에서
+// 등수가 앞섰는지(pi < pj)를 확인하여
+// 그 수를 세는(answer) 코드다.
+// 말 그대로 모든 경우 따지기(brute-force).
 module.exports._ = function (...test) {
   test = test.slice(1)
-  console.log("🚀 ~ file: 03-answer.js ~ line 27 ~ test", test)
   let answer = 0;
   m = test.length;
   n = test[0].length;

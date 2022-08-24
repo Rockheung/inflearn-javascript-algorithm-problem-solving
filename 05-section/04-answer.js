@@ -2,10 +2,20 @@ module.exports = function (...args) {
   const [[n,m],nums] = args;
   let answer = 0;
   const sum = (...nums) => nums.reduce((acc, num) => acc + num, 0)
-  for (let i = 0; i < n; i += 1) {
-    for (let j = i + 1; j <= n; j += 1) {
-      if (sum(...nums.slice(i,j)) > m) break;
+  let i = 0; j = 1;
+  while (i < n && j <= n) {
+    const sumNums = sum(...nums.slice(i,j));
+    if (sumNums === 0) j += 1;
+    else if (sumNums > 0 && sumNums < m) {
       answer += 1;
+      j += 1;
+    } else if (sumNums === m) {
+      answer += 1;
+      i += 1;
+      j = i + 1;
+    } else {
+      i += 1;
+      j = i + 1;
     }
   }
   return answer

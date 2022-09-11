@@ -1,4 +1,4 @@
-module.exports = function (...args) {
+module.exports._ = function (...args) {
   const [[n],heights] = args;
   let hyunSuIdx;
   let hyunSuFriendIdx;
@@ -16,6 +16,17 @@ module.exports = function (...args) {
 
   return [hyunSuIdx+1, hyunSuFriendIdx+1].join(' ')
 };
+
+module.exports = function (...args) {
+  const [[n],heights] = args;
+  const heightsSorted = [...heights].sort((a,b)=> a-b)
+  const [hyunSuIdx, hyunSuFriendIdx] = heightsSorted
+    .map((height, idx) => (heights[idx] !== height ? idx : -1))
+    .filter((idx) => idx > 0);
+
+  return [hyunSuIdx+1, hyunSuFriendIdx+1].join(' ')
+}
+
 
 module.exports.problemName = '6. 장난꾸러기 현수'
 
